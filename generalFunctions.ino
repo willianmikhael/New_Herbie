@@ -1,23 +1,18 @@
-bool isAccelerating = false;  
+bool isAccelerating = false;
 
-void FuzzyPID(){
+void FuzzyPID() {
 
-  if(!isAccelerating){
+  if (!isAccelerating) {
     //PID();
-  } else{
-    motors(stop,stop);
   }
 }
 
 void mapping() {
-
   int n = 0;
   int map[70];
 
-
   bool sensorMap = gpio_get(SENSOR_MAP) > THRESHOLD_VALUE;
   bool sensorStop = gpio_get(SENSOR_STOP) > THRESHOLD_VALUE;
-
 
   if (sensorMap == true && sensorStop == false) {
     map[n] = 1;
@@ -26,15 +21,18 @@ void mapping() {
     }
     n += 1;
   }
+}
 
-  if (map[5] == 1) {
+void processMapValue(int map[],int take) {
+  if (map[take] == 1) {
     isAccelerating = true;
-   // turbine(minBuoyancy);
+    turbine(minBuoyancy);
     motors(maxSpeed, maxSpeed);
   } else {
-    isAccelerating = false;
     for (int brakeTimer = 0; brakeTimer < 100; brakeTimer++) {
-     // turbine(maxBuoyancy);
+      turbine(maxBuoyancy);
       motors(brake, brake);
     }
+    isAccelerating = false;
   }
+}
