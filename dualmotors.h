@@ -12,6 +12,9 @@
 #ifndef DUALMOTORS_H
 #define DUALMOTORS_H
 
+#include "defines.h"
+#include "hardware/pwm.h"
+
 void motors(int left, int right) {
   if (left >= 0) {
     pwm_set_gpio_level(LEFT_MOTOR_PIN_1, left);

@@ -1,6 +1,10 @@
+#ifndef DEFINES_H
+#define DEFINES_H
+
 //<!----------------------Values to set motors speed-------------------------!>
 #define maxSpeed 255
 #define stop 0
+#define brake -60
 //<!--------------------------------------------------------------------------!>
 
 //<!----------------------Values to set turbine speed-------------------------!>
@@ -22,5 +26,8 @@
 #define LEFT_MOTOR_PIN_1  10
 #define LEFT_MOTOR_PIN_2  11
 #define RIGHT_MOTOR_PIN_1 12
-#define RIGHT_MOTOR_PIN_2 13
+#define RIGHT_MOTOR_PIN_2 9
 //<!---------------------------------------------------------------------------!>
+
+#endif // DEFINES_H
+
