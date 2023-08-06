@@ -1,5 +1,8 @@
 bool isAccelerating = false;
+
 int arrayMap[70];
+
+
 
 
 void run(){
@@ -18,8 +21,8 @@ void FuzzyPID() {
 void mapping() {
   int n = 0;
 
-  bool sensorMap = gpio_get(SENSOR_MAP) > THRESHOLD_VALUE;
-  bool sensorStop = gpio_get(SENSOR_STOP) > THRESHOLD_VALUE;
+  bool sensorMap = gpio_get(SENSOR_MAP) > THRESHOLD;
+  bool sensorStop = gpio_get(SENSOR_STOP) > THRESHOLD;
 
   if (sensorMap == true && sensorStop == false) {
     arrayMap[n] = 1;
@@ -42,4 +45,10 @@ void processMapValue(int arrayMap[], int take) {
     }
     isAccelerating = false;
   }
+}
+
+
+void turbine(int value) {
+  uint16_t throttle = (uint16_t)(value * 655.35);
+  pwm_set_gpio_level(TURBINE, throttle);
 }

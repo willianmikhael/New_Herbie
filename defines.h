@@ -17,9 +17,21 @@
 //<!--------------------------------------------------------------------------!>
 
 //<!------------------------Define sonsors pins-------------------------------!>
-#define SENSOR_STOP 18
-#define SENSOR_MAP 16           
-#define THRESHOLD_VALUE 500     
+#define NUM_SENSORS 10
+#define THRESHOLD 5000
+#define MAX_SENSOR_READING 1023
+
+#define S1 1
+#define S2 2
+#define S3 3
+#define S4 4
+#define S5 5
+#define S6 6
+#define S7 7
+#define S8 8
+#define SENSOR_MAP 9
+#define SENSOR_STOP 10
+   
 //<!--------------------------------------------------------------------------!>
 
 //<!-------------------------Define motors pins-------------------------------!>
@@ -28,6 +40,8 @@
 #define RIGHT_MOTOR_PIN_1 12
 #define RIGHT_MOTOR_PIN_2 9
 //<!---------------------------------------------------------------------------!>
+
+
 
 #endif // DEFINES_H
 

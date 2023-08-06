@@ -16,23 +16,27 @@
 #include "hardware/pwm.h"
 
 void motors(int left, int right) {
-  if (left >= 0) {
-    pwm_set_gpio_level(LEFT_MOTOR_PIN_1, left);
+
+  uint16_t left_pwm = (uint16_t)(left * 655.35);
+  uint16_t right_pwm = (uint16_t)(right * 655.35);
+
+
+  if (left_pwm >= 0) {
+    pwm_set_gpio_level(LEFT_MOTOR_PIN_1, left_pwm);
     gpio_put(LEFT_MOTOR_PIN_2, 0);
   } else {
-    left = left * (-1);
+    left_pwm = left_pwm * (-1);
     gpio_put(LEFT_MOTOR_PIN_1, 0);
-    pwm_set_gpio_level(LEFT_MOTOR_PIN_2, left);
+    pwm_set_gpio_level(LEFT_MOTOR_PIN_2, left_pwm);
   }
 
-  if (right >= 0) {
-    pwm_set_gpio_level(RIGHT_MOTOR_PIN_1, right);
+  if (right_pwm >= 0) {
+    pwm_set_gpio_level(RIGHT_MOTOR_PIN_1, right_pwm);
     gpio_put(RIGHT_MOTOR_PIN_2, 0);
   } else {
-    right = right * (-1);
+    right_pwm = right_pwm * (-1);
     gpio_put(RIGHT_MOTOR_PIN_1, 0);
-    pwm_set_gpio_level(RIGHT_MOTOR_PIN_2, right);
+    pwm_set_gpio_level(RIGHT_MOTOR_PIN_2, right_pwm);
   }
 }
-
 #endif  // DUALMOTORS_H
